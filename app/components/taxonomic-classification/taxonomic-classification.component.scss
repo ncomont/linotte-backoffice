@@ -1,0 +1,38 @@
+.ui.vertical.steps .step:after {
+    top: 0%;
+    right: 50%;
+    border-width: 0 1px 1px 0;
+    -webkit-transform: translateY(-50%) translateX(50%) rotate(-135deg);
+    transform: translateY(-50%) translateX(50%) rotate(-135deg);
+}
+
+.ui.vertical.steps .step {
+    height: 110px;
+    justify-content: center;
+}
+
+// Arrow between taxons
+.ui.vertical.steps .step:after {
+  display: none;
+}
+.ui.vertical.steps .step:after {
+  display: block;
+}
+.ui.vertical.steps .step:last-child:after {
+  display: none;
+}
+.ui.vertical.steps .step:last-child:after {
+  display: block;
+}
+.ui.vertical.steps .step:first-child:after {
+  display: none;
+}
+.ui.vertical.steps .step:first-child:after {
+  display: none;
+}
+
+
+// Rank labels
+.ui.tag.label:after, .ui.tag.labels .label:after {
+    display: none;
+}

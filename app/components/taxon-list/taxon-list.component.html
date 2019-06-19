@@ -1,0 +1,24 @@
+<div class="ui basic segment">
+    <table class="ui striped table">
+        <thead *ngIf="!hideHeader">
+            <tr>
+                <th></th>
+                <th>ID</th>
+                <th>Full name</th>
+                <th>Vernacular name</th>
+                <th>Vernacular group</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let taxon of taxons" (click)="click(taxon)">
+                <td>
+                    <div [ngClass]="{'olive': taxon.id === taxon.referenceId }" class="ui ribbon label">{{ taxon.rank }}</div>
+                </td>
+                <td>{{ taxon.id }}</td>
+                <td class="full-name"><i class="name">{{ taxon.name }}</i><br /><span class="author">{{ taxon.author }}</span></td>
+                <td>{{ taxon.vernacularName }}</td>
+                <td>{{ taxon.firstLevelVernacularGroup }}<br />{{ taxon.secondLevelVernacularGroup }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

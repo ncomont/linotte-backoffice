@@ -1,0 +1,24 @@
+<div class="ui form">
+    <div class="ui segment">
+        <div class="field">
+            <label>Term</label>
+            <input type="text" [(ngModel)]="term" name="term" placeholder="Term"/>
+        </div>
+        <div class="field">
+            <label>Ranks</label>
+            <div class="field">
+                <select class="ui fluid search dropdown" [(ngModel)]="selectedRank" multiple="">
+                    <option *ngFor="let rank of ranks" value="rank.key" [value]="rank.key">{{rank.key}}</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="ui segment" *ngIf="restrictToReferenceTaxon !== false">
+        <div class="field">
+            <div class="ui toggle checkbox">
+                <input type="checkbox" [(ngModel)]="referenceOnly" class="hidden" name="referenceOnly" tabindex="0">
+                <label>Restrict to reference taxons</label>
+            </div>
+        </div>
+    </div>
+</div>

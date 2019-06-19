@@ -1,0 +1,16 @@
+<div class="ui segment">
+    <div class="ui red message" *ngIf="error">{{ error }}</div>
+    
+    <form class="ui form" (ngSubmit)="onSubmit()">
+        <h4 class="ui dividing header"><i class="lock icon"></i> Restricted area</h4>
+        <div class="field">
+            <label>Username</label>
+            <input type="text" name="first-name" placeholder="Username" [(ngModel)]="user.username">
+        </div>
+        <div class="field">
+            <label>Password</label>
+            <input type="password" name="last-name" placeholder="Password" [(ngModel)]="user.password" >
+        </div>
+        <button class="ui button" type="submit">Login</button>
+    </form>
+</div>

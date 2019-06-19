@@ -1,0 +1,23 @@
+<div class="ui raised segment">
+    <h2 class="ui center aligned icon header">
+        <i class="circular file text outline icon"></i>
+        <div class="content">
+            {{ job.name }}
+            <div class="sub header">{{ job.file }}</div>
+        </div>
+    </h2>
+    <div class="ui center aligned basic segment">
+        <a class="ui blue label">{{ job.type }}</a> <a class="ui blue label">{{ job.status }}</a>
+    </div>
+    
+    <!-- {{ job | json }} -->
+    
+    <!-- id
+    name
+    file
+    last_update
+    status
+    type
+    data
+    red_list_id -->
+</div>

@@ -1,0 +1,12 @@
+td {
+    &.full-name {
+        max-width: 310px;
+
+        .name {
+            font-weight: bold;
+        }
+        .author {
+            font-size: 0.8em;
+        }
+    }
+}

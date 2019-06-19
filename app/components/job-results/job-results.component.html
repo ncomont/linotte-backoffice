@@ -1,0 +1,61 @@
+<div class="ui basic segment">
+    <div class="ui inverted dimmer" [ngClass]="{'active': fetching}">
+        <div class="ui text loader">Loading</div>
+    </div>
+    <p></p>
+
+    <div *ngIf="state == 'NOT_FOUND'">
+        <table class="ui table">
+            <thead>
+                <tr>
+                    <th>Desired taxon</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let result of results">
+                    <td>
+                        <ul>
+                            <li *ngFor="let entry of result.searchData | keys"><b>{{ entry.key }}:</b> {{ entry.value }}</li>
+                        </ul>
+                    </td>
+                    <td class="right aligned">
+                        <button class="big ui blue button" (click)="resolve(result)">
+                            Resolve
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div  *ngIf="state != 'NOT_FOUND'">
+        <table class="ui fixed table">
+            <thead>
+                <tr>
+                    <th>Desired taxon</th>
+                    <th>Retrieved taxon</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let result of results">
+                    <td>
+                        <ul>
+                            <li *ngFor="let entry of result.searchData | keys"><b>{{ entry.key }}:</b> {{ entry.value }}</li>
+                            <li *ngIf="result.taxonId"><b>ID:</b> {{ result.taxonId }}</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul *ngIf="result.taxon">
+                            <li *ngIf="result.taxon.name"><b>Name: </b> {{ result.taxon.name }}</li>
+                            <li *ngIf="result.taxon.vernacularName"><b>Vernacular name: </b> {{ result.taxon.vernacularName }}</li>
+                            <li *ngIf="result.taxon.author"><b>Author: </b> {{ result.taxon.author }}</li>
+                            <li *ngIf="result.taxon.rank"><b>Rank: </b> {{ result.taxon.rank }}</li>
+                            <li><b>ID: </b> {{ result.taxon.id }}</li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

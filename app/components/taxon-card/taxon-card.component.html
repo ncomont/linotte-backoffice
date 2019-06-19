@@ -1,0 +1,25 @@
+<div class="content">
+    <div class="header name"><i>{{ taxon.name }}</i></div>
+    <div class="description">
+        <div class="ui label">{{ taxon.id }}</div>
+        <div class="ui teal label">{{ taxon.rank }}</div>
+        <div *ngIf="taxon.id === taxon.referenceId" class="ui green label">
+            Reference
+        </div>
+        <div *ngIf="taxon.id !== taxon.referenceId" class="ui red label">
+            Deprecated
+        </div>
+    </div>
+</div>
+<div *ngIf="taxon.author" class="extra content">
+    <i class="user circle icon"></i>
+    {{ taxon.author }}
+</div>
+<div *ngIf="taxon.vernacularName" class="extra content">
+    <i class="address card outline icon"></i>
+    {{ taxon.vernacularName }}
+</div>
+<div class="extra content">
+    <i class="info circle icon"></i>
+    {{ taxon.firstLevelVernacularGroup }} / {{ taxon.secondLevelVernacularGroup}}
+</div>

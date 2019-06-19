@@ -1,0 +1,22 @@
+<div class="ui buttons">
+    <button class="ui icon button" [ngClass]="{'disabled': taxons.length === 1 }" (click)="setDepth(depth - 1)">
+        <i class="left minus icon"></i>
+    </button>
+    <button class="ui disabled button">{{ taxons.length }}</button>
+    <button class="ui right icon button"  [ngClass]="{'disabled': hasParent() }" (click)="setDepth(depth + 1)">
+        <i class="right plus icon"></i>
+    </button>
+</div>
+
+<br />
+<br />
+
+<div class="ui vertical big steps">
+    <div *ngFor="let taxon of taxons"  routerLink="/taxon-details/{{taxon.id}}" [ngClass]="{'completed': taxon.id !== taxon.taxonId, 'active': taxon.id === taxonId }" class="step">
+        <div class="content">
+            <div class="title"><i>{{ taxon.name }}</i></div>
+            <div class="description">{{ taxon.author }}</div>
+            <div class="floating ui teal left tag label">{{ taxon.rank }}</div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,12 @@
+<div class="ui segments" *ngFor="let report of reports">
+    <a routerLink="/job-report/{{report.id}}">
+        <div class="ui segment">
+            <p><i class="icon file text" [ngClass]="getStatusClasses(report).color" ></i> Report created on {{ report.creationDate | date:'medium' }}</p>
+        </div>
+    </a>
+</div>
+
+<div class="ui warning message" *ngIf="reports?.length === 0">
+    <i class="warning icon"></i>
+    Not reports found for this job
+</div>

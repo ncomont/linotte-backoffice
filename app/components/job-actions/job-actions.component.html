@@ -1,0 +1,11 @@
+<div class="ui  three item menu">
+    <a class="red item" [ngClass]="{'active': state == 'NOT_FOUND'}" (click)="selectStateFilter('NOT_FOUND')">
+        Not found
+    </a>
+    <a class="yellow item" [ngClass]="{'active': state == 'RESOLVED'}" (click)="selectStateFilter('RESOLVED')">
+        Manually resolved
+    </a>
+    <a class="green item" [ngClass]="{'active': state == 'FOUND'}" (click)="selectStateFilter('FOUND')">
+        Found
+    </a>
+</div>

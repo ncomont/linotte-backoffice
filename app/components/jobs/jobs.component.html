@@ -1,0 +1,17 @@
+<jobs-statistics [(new)]="newJobsCount" [(archived)]="archivedJobsCount" [(idle)]="idleJobsCount" [(pending)]="pendingJobsCount"></jobs-statistics>
+
+<div class="ui basic segment">
+    <div *ngFor="let job of jobs">
+        <h5 class="ui top attached header">
+            <i class="play green icon" (click)="start(job)"></i> {{ job.name}}
+        </h5>
+        <div class="ui attached segment">
+            <job-reports *ngIf="!job.isPending" [(reports)]="job.reports"></job-reports>
+            <div class="ui warning message" *ngIf="job.isPending">
+                <i class="wait icon"></i>
+                A report is pending for this job ...
+            </div>
+        </div>
+        <br/>
+    </div>
+</div>

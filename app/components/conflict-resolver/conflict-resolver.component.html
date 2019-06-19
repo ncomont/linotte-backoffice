@@ -1,0 +1,51 @@
+<div class="content">
+    <div class="ui header">The following informations were provided :</div>
+    
+    <br />
+    <table class="ui celled table">
+        <thead>
+            <tr>
+                <th class="center aligned" *ngFor="let entry of conflict?.searchData | keys">{{ entry.key }}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="center aligned" *ngFor="let entry of conflict?.searchData | keys">{{ entry.value }}</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <br />
+    
+    <div *ngIf="!selectedTaxon">
+        <div class="ui header">But unfortunately, no matches was found... You'll have to resolve it manually :</div>
+        <br />
+        
+        <search [restrictToReferenceTaxon]="false" [initWithTerm]="initialTerm"></search>
+        
+        <div class="ui basic segment results">
+            <div class="ui inverted dimmer" [ngClass]="{'active': fetching}">
+                <div class="ui text loader">Loading</div>
+            </div>
+            
+            <taxon-list [(taxons)]="results" [hideHeader]="true" *ngIf="results?.length > 0"></taxon-list>
+            <div class="ui negative message" *ngIf="!fetching && results?.length == 0">
+                <div class="header">
+                    Oops !
+                </div>
+                <p>Sorry, no results were found for your search.</p>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="selectedTaxon">
+        <div class="ui header">You've selected the following taxon :</div>
+        <br />
+        {{ selectedTaxon | json }}
+    </div>
+</div>
+<div class="actions">
+    <div class="ui black deny button">Cancel
+    </div>
+    <div class="ui orange right labeled icon button" (click)="drop()">Unknown<i class="warning sign icon"></i></div>
+    <div class="ui right labeled icon button" [ngClass]="getClasses().button" (click)="resolve()">Accept<i class="checkmark icon"></i></div>
+</div>

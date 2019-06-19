@@ -1,0 +1,19 @@
+<div class="ui center aligned basic segment">
+    <div class="ui cards centered">
+        <taxon-card [taxon]="reference"></taxon-card>
+    </div>
+    
+    <div class="ui horizontal divider">
+        Taxonomic classification
+    </div>
+    
+    <taxonomic-classification [(taxonId)]="reference.id"></taxonomic-classification>
+    
+    <div class="ui horizontal divider" *ngIf="synonyms?.length">
+        Synonymous Taxon
+    </div>
+    
+    <div class="ui cards centered">
+        <taxon-card *ngFor="let taxon of synonyms" [taxon]="taxon"></taxon-card>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+<div class="ui segment">
+    <h4 class="ui dividing header"><i class="search icon"></i> Search taxons</h4>
+    <search></search>
+</div>
+
+
+<div class="ui basic segment">
+    <div class="ui inverted dimmer" [ngClass]="{'active': fetching}">
+        <div class="ui text loader">Loading</div>
+    </div>
+
+    <taxon-list [(taxons)]="page.items" *ngIf="page.items?.length > 0"></taxon-list>
+    <div class="ui negative message" *ngIf="!fetching && page.items?.length == 0">
+        <div class="header">
+            Oops !
+        </div>
+        <p>Sorry, no results were found for your search.</p>
+    </div>
+    <br />
+    <paginator [(pageSize)]="page.limit" [(total)]="page.total"></paginator>
+</div>

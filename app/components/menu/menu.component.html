@@ -1,0 +1,10 @@
+<div class="ui fixed inverted menu">
+    <div class="ui container">
+        <a href="#" class="header item">
+            Linotte Admin Panel
+        </a>
+        <a class="item" routerLink="/taxons" *ngIf="canDisplayMenu">Taxons</a>
+        <a class="item" routerLink="/jobs" *ngIf="canDisplayMenu">Jobs</a>
+        <a class="item" *ngIf="canDisplayMenu" (click)="logout()">Logout</a>
+    </div>
+</div>
